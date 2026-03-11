@@ -1,0 +1,84 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 28,  // Чуть выше (было 24)
+    "spacing": 16,  // Больше пробелов между элементами
+    
+    "margin-top": 0,
+    "margin-left": 0,
+    "margin-right": 0,
+    "margin-bottom": 0,
+    
+    "modules-left": ["custom/launcher", "hyprland/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["network", "pulseaudio", "battery", "custom/power"],
+    
+    "custom/launcher": {
+        "format": "",
+        "on-click": "hyprlauncher",
+        "tooltip": false
+    },
+    
+    "hyprland/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format": "{icon}",
+        "format-icons": {
+            "1": "●",
+            "2": "●",
+            "3": "●",
+            "4": "●",
+            "5": "●",
+            "active": "○",
+            "urgent": "▲",
+            "empty": "●"
+        }
+    },
+    
+    // Часы с датой
+    "clock": {
+        "format": "{:%H:%M  •  %d.%m.%Y}",  // Формат: 23:45 • 15.03.2024
+        "format-alt": "{:%a, %d %b %Y}",     // Альтернативный: Пн, 15 мар 2024
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1
+        }
+    },
+    
+    "network": {
+        "format-wifi": "",
+        "format-ethernet": "",
+        "format-disconnected": "睊",
+        "on-click": "nm-connection-editor"
+    },
+    
+    "pulseaudio": {
+        "format": "{icon}",
+        "format-muted": "",
+        "format-icons": ["", "", ""],
+        "on-click": "pavucontrol",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+    },
+    
+    "battery": {
+        "interval": 10,
+        "format": "{icon}",
+        "format-icons": {
+            "charging": ["", "", "", "", ""],
+            "default": ["", "", "", "", ""]
+        },
+        "format-charging": "{icon}",
+        "tooltip-format": "{capacity}% - {time}"
+    },
+    
+    "custom/power": {
+        "format": "⏻",
+        "on-click": "wlogout",
+        "tooltip": false
+    }
+}
+

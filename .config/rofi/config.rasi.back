@@ -1,0 +1,117 @@
+/* ===== Ayu Dark palette ===== */
+* {
+    bg: #0f1419;
+    bg-alt: #131721;
+    fg: #e6e1cf;
+    accent: #ffb454;
+    border: #1f2430;
+}
+
+/* ===== окно ===== */
+window {
+    width: 620px;
+    border-radius: 16px;
+    border: 2px;
+    border-color: @border;
+    background-color: @bg;
+    location: center;
+    anchor: center;
+    font: "SF Pro Display 12";
+}
+
+configuration {
+    show-icons: true;
+}
+
+/* ===== основной контейнер ===== */
+mainbox {
+    children: [ inputbar, listview ];
+    spacing: 16px;
+    padding: 22px;
+}
+
+/* ===== строка поиска ===== */
+inputbar {
+    background-color: @bg-alt;
+    border-radius: 12px;
+    padding: 12px;
+    spacing: 10px;
+    children: [ prompt, entry ];
+}
+
+prompt {
+    text-color: @accent;
+    value: "";
+}
+
+entry {
+    text-color: @fg;
+    placeholder: "Поиск";
+}
+
+/* ===== список ===== */
+listview {
+    lines: 7;
+    columns: 1;
+    spacing: 8px;
+    scrollbar: false;
+}
+
+/* ===== элемент ===== */
+element {
+    padding: 10px;
+    border-radius: 10px;
+    spacing: 12px;
+}
+
+/* обычный */
+element normal.normal {
+    background-color: transparent;
+}
+
+/* выбранный */
+element selected.normal {
+    background-color: @accent;
+}
+
+/* ===== иконка ===== */
+element-icon {
+    size: 28px;
+}
+
+/* текст */
+element-text {
+    text-color: @fg;
+}
+
+/* текст выбранного */
+element selected.normal element-text {
+    text-color: #0f1419;
+}
+
+/* обычный элемент */
+element normal.normal {
+    background-color: transparent;
+}
+
+/* чередующийся элемент (вторая строка) */
+element alternate.normal {
+    background-color: transparent;
+}
+
+/* выбранный */
+element selected.normal {
+    background-color: @accent;
+}
+
+/* текст обычный */
+element-text normal {
+    text-color: @fg;
+}
+
+/* текст выбранного */
+element-text selected {
+    text-color: #0f1419;
+}
+
+

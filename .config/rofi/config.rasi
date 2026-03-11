@@ -1,0 +1,149 @@
+
+/* ===== Ayu Dark + macOS-like Rofi ===== */
+* {
+    bg: #0f1419;
+    bg-alt: #131721;
+    bg-soft: #1a1f29;
+    fg: #e6e1cf;
+    fg-muted: #8a9199;
+    accent: #ffb454;
+    border: #1f2430;
+    urgent: #f07178;
+}
+
+configuration {
+    show-icons: true;
+    /* Пример, если хочешь переключать режимы прямо из launcher'а:
+    modi: "drun,run,window";
+    show-icons: true;
+    */
+}
+
+window {
+    width: 620px;
+    border: 2px;
+    border-radius: 16px;
+    border-color: @border;
+    background-color: @bg;
+    location: center;
+    anchor: center;
+    font: "SF Pro Display 12";
+}
+
+mainbox {
+    children: [ inputbar, mode-switcher, listbox ];
+    spacing: 16px;
+    padding: 22px;
+}
+
+/* ===== строка поиска ===== */
+inputbar {
+    background-color: @bg-alt;
+    border-radius: 12px;
+    border: 1px;
+    border-color: transparent;
+    padding: 12px 14px;
+    spacing: 10px;
+    children: [prompt,  entry ];
+}
+
+prompt {
+    /*
+     * Было: "
+     
+     " — это glyph из Font Awesome / Nerd Font.
+     * Если такой шрифт не установлен, иконка не отображается.
+     * Поэтому тут безопасный unicode-символ.
+     */
+    content: "🔎";
+    text-color: @accent;
+    vertical-align: 0.5;
+}
+
+entry {
+    text-color: @fg;
+    placeholder: "Поиск";
+    placeholder-color: @fg-muted;
+}
+
+/* ===== переключатель режимов ===== */
+mode-switcher {
+    background-color: transparent;
+    orientation: horizontal;
+    spacing: 10px;
+}
+
+button {
+    background-color: @bg-alt;
+    text-color: @fg-muted;
+    border: 1px;
+    border-color: @border;
+    border-radius: 10px;
+    padding: 8px 14px;
+}
+
+button selected {
+    background-color: @accent;
+    text-color: @bg;
+    border-color: @accent;
+}
+
+/* ===== список + скролл ===== */
+listbox {
+    spacing: 10px;
+    children: [ listview, scrollbar ];
+}
+
+listview {
+    lines: 7;
+    columns: 1;
+    fixed-height: true;
+    dynamic: false;
+    spacing: 8px;
+    scrollbar: true;
+    layout: vertical;
+}
+
+scrollbar {
+    width: 6px;
+    border: 0;
+    handle-width: 6px;
+    padding: 0;
+    background-color: transparent;
+    handle-color: @bg-soft;
+    border-radius: 999px;
+}
+
+/* ===== элемент ===== */
+element {
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 10px 12px;
+    spacing: 12px;
+}
+
+element normal.normal {
+    background-color: transparent;
+}
+
+element alternate.normal {
+    background-color: transparent;
+}
+
+element selected.normal {
+    background-color: @accent;
+}
+
+element-icon {
+    size: 28px;
+    background-color: transparent;
+}
+
+element-text {
+    text-color: @fg;
+    background-color: transparent;
+}
+
+element selected.normal element-text {
+    text-color: @bg;
+}

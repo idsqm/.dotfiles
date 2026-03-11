@@ -1,0 +1,174 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "SF Pro Display", "Helvetica Neue", "JetBrains Mono Nerd Font", sans-serif;
+    font-size: 13px;
+    min-height: 0;
+}
+
+/* Цвета */
+@define-color black #000000;
+@define-color white #FFFFFF;
+@define-color gray #999999;
+@define-color light-gray #CCCCCC;
+@define-color yellow #FFB454;
+@define-color orange #FF8F40;
+@define-color green #B8CC52;
+@define-color red #F07178;
+
+window#waybar {
+    background: @black;
+    color: @gray;
+    border-bottom: 1px solid #333333;
+    padding: 0 8px;  /* Внутренние отступы по бокам */
+}
+
+/* Кнопка-яблоко */
+#custom-launcher {
+    color: @white;
+    font-size: 18px;  /* Чуть больше */
+    padding: 0 12px 0 16px;
+}
+
+#custom-launcher:hover {
+    color: @yellow;
+}
+
+/* Рабочие столы */
+#workspaces button {
+    padding: 0 8px;  /* Больше отступы между точками */
+    background: transparent;
+    color: @gray;
+    font-size: 14px;  /* Точки покрупнее */
+}
+
+#workspaces button.active {
+    color: @white;
+}
+
+#workspaces button:hover {
+    color: @yellow;
+}
+
+/* Часы с датой */
+#clock {
+    color: @white;
+    font-weight: 400;
+    padding: 0 16px;  /* Больше отступы вокруг часов */
+    font-size: 13px;
+    letter-spacing: 0.3px;  /* Немного разреженный текст */
+}
+
+/* Все модули */
+#custom-launcher,
+#workspaces,
+#clock,
+#network,
+#pulseaudio,
+#battery,
+#custom-power {
+    background: transparent;
+    padding: 0 8px;  /* Увеличил отступы */
+}
+
+/* Иконки по умолчанию */
+#network, 
+#pulseaudio, 
+#battery, 
+#custom-power {
+    color: @gray;
+    font-size: 14px;  /* Иконки чуть крупнее */
+    padding: 0 8px;
+}
+
+/* Hover эффекты */
+#network:hover,
+#pulseaudio:hover,
+#battery:hover,
+#custom-power:hover {
+    color: @white;
+}
+
+/* СОСТОЯНИЯ */
+
+/* Батарея - предупреждение (20-10%) */
+#battery.warning:not(.charging) {
+    color: @orange;
+}
+
+/* Батарея - критический уровень (<10%) */
+#battery.critical:not(.charging) {
+    color: @red;
+    animation: blink 0.8s infinite;
+}
+
+/* Батарея заряжается */
+#battery.charging {
+    color: @gray;
+}
+
+/* Сеть отключена */
+#network.disconnected {
+    color: @red;
+}
+
+/* Звук выключен */
+#pulseaudio.muted {
+    color: @gray;
+    opacity: 0.5;
+}
+
+/* Анимация */
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+/* Тултипы */
+tooltip {
+    background: @black;
+    border: 1px solid #333333;
+    border-radius: 0;
+    color: @white;
+    font-size: 12px;
+    padding: 8px 12px;
+}
+
+/* Календарь в тултипе */
+tooltip calendar {
+    background: @black;
+    color: @gray;
+}
+
+tooltip calendar.header {
+    color: @white;
+    font-weight: bold;
+}
+
+tooltip calendar:selected {
+    color: @yellow;
+}
+
+/* Трей */
+#tray {
+    background: transparent;
+    padding: 0 12px 0 8px;
+}
+
+#tray menu {
+    background: @black;
+    border: 1px solid #333333;
+    border-radius: 0;
+    color: @white;
+    padding: 8px 0;
+}
+
+#tray menu item {
+    padding: 6px 24px;
+}
+
+#tray menu item:hover {
+    background: #333333;
+}
+
